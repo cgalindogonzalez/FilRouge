@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+  xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0">
+	
+	<!-- Servlets declaration -->
+	<!-- CreationClient -->
+	<servlet>
+		<servlet-name>CreationClient</servlet-name>
+		<servlet-class>com.scholanova.groupe2.servlets.CreationClient</servlet-class>
+	</servlet>
+	<!-- CreationCommande -->
+	<servlet>
+		<servlet-name>CreationCommande</servlet-name>
+		<servlet-class>com.scholanova.groupe2.servlets.CreationCommande</servlet-class>
+	</servlet>
+	
+	<!-- Servlets mapping -->
+	<!-- CreationClient -->
+	<servlet-mapping>
+    		<servlet-name>CreationClient</servlet-name>
+    		<url-pattern>/creationClient</url-pattern>
+	</servlet-mapping>
+	<!-- CreationCommande -->
+	<servlet-mapping>
+    		<servlet-name>CreationCommande</servlet-name>
+    		<url-pattern>/creationCommande</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>
