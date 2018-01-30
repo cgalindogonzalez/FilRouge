@@ -1,6 +1,7 @@
 package com.scholanova.groupe2.beans;
 
 public class Client {
+	
 	private String nom;
 	private String prenom;
 	private String adresse;

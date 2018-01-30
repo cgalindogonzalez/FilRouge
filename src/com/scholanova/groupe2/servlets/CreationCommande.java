@@ -14,7 +14,7 @@ import org.joda.time.format.DateTimeFormatter;
 import com.scholanova.groupe2.beans.Client;
 import com.scholanova.groupe2.beans.Commande;
 
-public class CreateCommande extends HttpServlet {
+public class CreationCommande extends HttpServlet {
 	
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*
