@@ -11,11 +11,16 @@ public class CreationClient extends HttpServlet {
 	
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
-		String adresse = request.getParameter("adresse");
-		String telephone = request.getParameter("telephone");
-		String email = request.getParameter("email");
+		/*
+         * Récupération des données saisies, envoyées en tant que paramètres de
+         * la requête GET générée à la validation du formulaire
+         */
+		String nom = request.getParameter( "nomClient" );
+        String prenom = request.getParameter( "prenomClient" );
+        String adresse = request.getParameter( "adresseClient" );
+        String telephone = request.getParameter( "telephoneClient" );
+        String email = request.getParameter( "emailClient" );
+
 		
 	}
 
