@@ -11,6 +11,9 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import com.scholanova.groupe2.beans.Client;
+import com.scholanova.groupe2.beans.Commande;
+
 public class CreateCommande extends HttpServlet {
 	
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,6 +46,46 @@ public class CreateCommande extends HttpServlet {
         String statutPaiement = request.getParameter( "statutPaiementCommande" );
         String modeLivraison = request.getParameter( "modeLivraisonCommande" );
         String statutLivraison = request.getParameter( "statutLivraisonCommande" );
+        
+        String message;
+        /*
+         * Initialisation du message à afficher : si un des champs obligatoires
+         * du formulaire n'est pas renseigné, alors on affiche un message
+         * d'erreur, sinon on affiche un message de succès
+         */
+        if ( nom.trim().isEmpty() || adresse.trim().isEmpty() || telephone.trim().isEmpty() || montant == -1
+                || modePaiement.isEmpty() || modeLivraison.isEmpty() ) {
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires. <br> <a href=\"creerCommande.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'une commande.";
+        } else {
+            message = "Commande créée avec succès !";
+        }
+        
+        /*
+         * Création des beans Client et Commande et initialisation avec les
+         * données récupérées
+         */
+        Client client = new Client();
+        client.setNom( nom );
+        client.setPrenom( prenom );
+        client.setAdresse( adresse );
+        client.setTelephone( telephone );
+        client.setEmail( email );
+
+        Commande commande = new Commande();
+        commande.setClient( client );
+        commande.setDate( date );
+        commande.setMontant( montant );
+        commande.setModePaiement( modePaiement );
+        commande.setStatutPaiement( statutPaiement );
+        commande.setModeLivraison( modeLivraison );
+        commande.setStatutLivraison( statutLivraison );
+        
+        /* Ajout du bean et du message à l'objet requête */
+        request.setAttribute( "commande", commande );
+        request.setAttribute( "message", message );
+        
+        /* Transmission à la page JSP en charge de l'affichage des données */
+        this.getServletContext().getRequestDispatcher( "/afficherCommande.jsp" ).forward( request, response );
 
 	}
 
